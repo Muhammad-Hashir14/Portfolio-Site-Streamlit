@@ -86,6 +86,23 @@ def journey():
     st.write("Embarked on an exciting academic journey at Sindh Madressatul Islam University, where I developed a passion for technology and programming, fueling my interest in data science and artificial intelligence.")
     st.markdown('</div>', unsafe_allow_html=True)
 
+def projects():
+    st.markdown("<h1 style='text-align: center; color: #009688;'>Projects</h1>", unsafe_allow_html=True)
+    st.write("-----------------------------------------------------------------------------------------")
+    col1, col2, col3 = st.columns(3)
+
+# First row (3 columns)
+    with col1:
+        st.image("images/restaurantmenu.png", caption="Image 1", use_column_width=True)
+        st.write("### Restaurant Menu Generator")
+        st.write("This project utilizes the Gemini model and LangChain to generate customized menus and names for various cuisines. The user interface is built using Streamlit, providing an intuitive and engaging experience for users looking to create unique restaurant menus.")
+
+        st.markdown('<a href="https://restaurant-menu-generator-langchain.streamlit.app/" target="_blank"><button style="width: 100%; height: 50px; background-color: #009688; color: white; border: none; border-radius: 5px; cursor: pointer;">Visit</button></a>', unsafe_allow_html=True)
+
+
+        st.write("-------------------------------------------------------------------------------------")
+
+   
 
 with st.sidebar:
     st.markdown(
@@ -101,16 +118,18 @@ with st.sidebar:
 
     
     col1, col2 = st.columns([1, 1.5])  
-    with col1:
-        if st.button("About Me"):
-            st.session_state["page"] = "about"
-
-    with col2:
-        if st.button("My Journey"):
-            st.session_state["page"] = "journey"
+    if col1.button("About Me"):
+        st.session_state["page"] = "about"
+    if col2.button("My Journey"):
+        st.session_state["page"] = "journey"
+    if col1.button("Projects"):
+        st.session_state["page"] = "projects"
 
 if st.session_state["page"] == "about":
     about()
 
 if st.session_state["page"] == "journey":
     journey()
+
+if st.session_state["page"] == "projects":
+    projects()
